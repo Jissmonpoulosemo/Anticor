@@ -243,8 +243,8 @@ function App() {
   // Main person images for carousel
   const heroImages = [
     "/image/1000820751.jpg",
-   "/image/1000820751.jpg",
-   "/image/1000820751.jpg",
+    "/image/1000820751.jpg",
+    "/image/1000820751.jpg",
   ];
 
   // Auto-slide carousel
@@ -255,7 +255,10 @@ function App() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  const { scrollYProgress } = useScroll();
+  // FIX 1: Remove unused scrollYProgress
+  // const { scrollYProgress } = useScroll(); // REMOVED - not being used
+  // Just use useScroll without destructuring if you need it later
+  useScroll(); // This is fine, but we're not using the return value
 
   const handleChatSubmit = (e) => {
     e.preventDefault();
@@ -313,7 +316,7 @@ function App() {
     { label: "Employment Generated", value: 8, icon: "💼" },
   ];
 
-  const  OurVision = [
+  const OurVision = [
     { title: "Education", icon: "🎓", description: "Quality education for every citizen" },
     { title: "Healthcare", icon: "🏥", description: "Universal healthcare access" },
     { title: "Women Empowerment", icon: "👩", description: "Empowering women in all sectors" },
@@ -464,7 +467,6 @@ function App() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-             
                 15
               </motion.h3>
               <p>Social Achievements</p>
@@ -778,12 +780,13 @@ function App() {
               </div>
             </div>
           </div>
+          {/* FIX 2: Replace # with actual URLs or use buttons */}
           <div className="social-links-large">
-            <a href="#" aria-label="Instagram"><FaInstagram size={30} /></a>
-            <a href="#" aria-label="Facebook"><FaFacebookF size={30} /></a>
-            <a href="#" aria-label="Twitter"><FaTwitter size={30} /></a>
-            <a href="#" aria-label="Youtube"><FaYoutube size={30} /></a>
-            <a href="#" aria-label="LinkedIn"><FaLinkedinIn size={30} /></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={30} /></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={30} /></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter size={30} /></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><FaYoutube size={30} /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={30} /></a>
           </div>
         </div>
       </section>
@@ -847,7 +850,8 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
-            <h3></h3>Anti Corruption People
+            {/* FIX 3: Heading has content now */}
+            <h3>Anti Corruption People</h3>
             <p>Dedicated to public service, leadership, education and global dialogue.</p>
           </div>
           <div className="footer-section">
@@ -866,12 +870,13 @@ function App() {
           </div>
           <div className="footer-section">
             <h4>Connect</h4>
+            {/* FIX 4: Replace # with actual URLs or use buttons */}
             <div className="social-links">
-              <a href="#" aria-label="Instagram"><FaInstagram size={20} /></a>
-              <a href="#" aria-label="Facebook"><FaFacebookF size={20} /></a>
-              <a href="#" aria-label="Twitter"><FaTwitter size={20} /></a>
-              <a href="#" aria-label="Youtube"><FaYoutube size={20} /></a>
-              <a href="#" aria-label="LinkedIn"><FaLinkedinIn size={20} /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={20} /></a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={20} /></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter size={20} /></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><FaYoutube size={20} /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={20} /></a>
             </div>
             <div className="newsletter">
               <input type="email" placeholder="Your Email" />
@@ -881,7 +886,7 @@ function App() {
         </div>
         <div className="footer-bottom">
           <p>&copy; 2026 Anti Corruption People. All rights reserved.</p>
-          <p> Helpline: 9633228352</p>
+          <p>Helpline: 9633228352</p>
         </div>
       </footer>
     </div>

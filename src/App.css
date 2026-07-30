@@ -377,23 +377,27 @@ body {
   background: var(--glass-border);
 }
 
-/* Carousel */
+/* ========== FIXED RESPONSIVE CAROUSEL ========== */
 .hero-carousel {
   flex: 1;
   position: relative;
   z-index: 1;
   min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .carousel-container {
   position: relative;
-  width: 68%;
+  width: 100%;
+  max-width: 600px;
   height: 500px;
-  margin-left: auto;
-  margin-right: 95px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
 }
 
 .carousel-slide {
@@ -691,7 +695,7 @@ body {
   border-radius: 3px;
 }
 
-/* Gallery Section - Updated for different image sizes */
+/* Gallery Section */
 .gallery-section {
   padding: 6rem 4rem;
   max-width: 1400px;
@@ -724,7 +728,6 @@ body {
   border-color: var(--secondary);
 }
 
-/* Masonry Grid for different image sizes */
 .gallery-grid {
   columns: 3;
   column-gap: 1.5rem;
@@ -885,148 +888,6 @@ body {
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 600;
-}
-
-/* ========== RESPONSIVE GALLERY ========== */
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .gallery-grid {
-    columns: 2;
-    column-gap: 1rem;
-  }
-  
-  .gallery-item {
-    margin-bottom: 1rem;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .gallery-section {
-    padding: 3rem 1rem;
-  }
-
-  .gallery-grid {
-    columns: 2;
-    column-gap: 0.75rem;
-  }
-  
-  .gallery-item {
-    margin-bottom: 0.75rem;
-    border-radius: 12px;
-  }
-
-  .gallery-filters {
-    gap: 0.3rem;
-  }
-
-  .gallery-filters button {
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
-  }
-
-  .gallery-overlay {
-    padding: 1.5rem 1rem 1rem;
-  }
-
-  .gallery-overlay h4 {
-    font-size: 0.9rem;
-  }
-
-  .gallery-category {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.6rem;
-  }
-
-  .delete-btn {
-    width: 28px;
-    height: 28px;
-    top: 0.3rem;
-    right: 0.3rem;
-  }
-
-  .delete-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-/* Small phones */
-@media (max-width: 480px) {
-  .gallery-grid {
-    columns: 2;
-    column-gap: 0.5rem;
-  }
-  
-  .gallery-item {
-    margin-bottom: 0.5rem;
-    border-radius: 10px;
-  }
-
-  .gallery-overlay {
-    padding: 1rem 0.75rem 0.75rem;
-  }
-
-  .gallery-overlay h4 {
-    font-size: 0.75rem;
-  }
-
-  .gallery-category {
-    font-size: 0.55rem;
-    padding: 0.1rem 0.4rem;
-  }
-
-  .delete-btn {
-    width: 22px;
-    height: 22px;
-    top: 0.2rem;
-    right: 0.2rem;
-  }
-
-  .delete-btn svg {
-    width: 12px;
-    height: 12px;
-  }
-
-  .lightbox {
-    padding: 1rem;
-  }
-
-  .lightbox-content {
-    max-width: 98vw;
-  }
-
-  .lightbox-close {
-    width: 32px;
-    height: 32px;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-
-  .lightbox-close svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .lightbox-info {
-    padding: 1rem;
-  }
-
-  .lightbox-info h3 {
-    font-size: 1rem;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 360px) {
-  .gallery-grid {
-    columns: 1;
-  }
-  
-  .gallery-item {
-    margin-bottom: 0.75rem;
-  }
 }
 
 /* Volunteer Section */
@@ -1547,10 +1408,12 @@ body {
   .hero-carousel {
     width: 100%;
     max-width: 600px;
+    min-height: 400px;
   }
   
   .carousel-container {
     height: 400px;
+    max-width: 100%;
   }
 
   .nav-links {
@@ -1593,6 +1456,16 @@ body {
 
   .vision-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Gallery responsive */
+  .gallery-grid {
+    columns: 2;
+    column-gap: 1rem;
+  }
+  
+  .gallery-item {
+    margin-bottom: 1rem;
   }
 }
 
@@ -1643,12 +1516,37 @@ body {
     display: none;
   }
 
+  /* ========== FIXED MOBILE CAROUSEL ========== */
   .hero-carousel {
+    width: 100%;
     max-width: 100%;
+    min-height: 250px;
+    padding: 0;
   }
 
   .carousel-container {
-    height: 300px;
+    height: 280px;
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .carousel-slide img {
+    object-fit: cover;
+  }
+
+  .carousel-dots {
+    bottom: 12px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .pulse-ring {
+    display: none;
   }
 
   .section-title {
@@ -1703,12 +1601,13 @@ body {
   }
 
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    columns: 2;
+    column-gap: 0.75rem;
   }
-
+  
   .gallery-item {
-    aspect-ratio: 4/3;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
   }
 
   .gallery-filters {
@@ -1720,8 +1619,29 @@ body {
     font-size: 0.8rem;
   }
 
+  .gallery-overlay {
+    padding: 1.5rem 1rem 1rem;
+  }
+
   .gallery-overlay h4 {
     font-size: 0.9rem;
+  }
+
+  .gallery-category {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.6rem;
+  }
+
+  .delete-btn {
+    width: 28px;
+    height: 28px;
+    top: 0.3rem;
+    right: 0.3rem;
+  }
+
+  .delete-btn svg {
+    width: 14px;
+    height: 14px;
   }
 
   .timeline-year {
@@ -1802,8 +1722,19 @@ body {
     font-size: 0.8rem;
   }
 
+  /* ========== FIXED SMALL PHONE CAROUSEL ========== */
+  .hero-carousel {
+    min-height: 200px;
+  }
+
   .carousel-container {
-    height: 250px;
+    height: 220px;
+    border-radius: 12px;
+  }
+
+  .carousel-dots {
+    bottom: 8px;
+    gap: 6px;
   }
 
   .dot {
@@ -1820,12 +1751,13 @@ body {
   }
 
   .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    columns: 2;
+    column-gap: 0.5rem;
   }
-
+  
   .gallery-item {
-    aspect-ratio: 4/3;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
   }
 
   .gallery-overlay {
@@ -1833,22 +1765,24 @@ body {
   }
 
   .gallery-overlay h4 {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .gallery-category {
-    font-size: 0.6rem;
-    padding: 0.1rem 0.5rem;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.4rem;
   }
 
   .delete-btn {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    top: 0.2rem;
+    right: 0.2rem;
   }
 
   .delete-btn svg {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
   }
 
   .volunteer-stats {
@@ -1900,5 +1834,64 @@ body {
     right: 0.5rem;
     bottom: 4.5rem;
     max-height: 350px;
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox-content {
+    max-width: 98vw;
+  }
+
+  .lightbox-close {
+    width: 32px;
+    height: 32px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .lightbox-close svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .lightbox-info {
+    padding: 1rem;
+  }
+
+  .lightbox-info h3 {
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  /* ========== FIXED EXTRA SMALL CAROUSEL ========== */
+  .hero-carousel {
+    min-height: 160px;
+  }
+
+  .carousel-container {
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .carousel-dots {
+    bottom: 6px;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .gallery-grid {
+    columns: 1;
+  }
+  
+  .gallery-item {
+    margin-bottom: 0.75rem;
   }
 }
