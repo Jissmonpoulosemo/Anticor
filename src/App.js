@@ -1,12 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { motion, useScroll } from "framer-motion";
 import {
   ArrowRight,
   MapPin,
-  Calendar,
-  Search,
   Play,
   X,
   MessageCircle,
@@ -611,7 +608,6 @@ function App() {
               </div>
             </div>
           </div>
-          {/* FIX 2: Replace # with actual URLs or use buttons */}
           <div className="social-links-large">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={30} /></a>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={30} /></a>
@@ -681,7 +677,6 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
-            {/* FIX 3: Heading has content now */}
             <h3>Anti Corruption People</h3>
             <p>Dedicated to public service, leadership, education and global dialogue.</p>
           </div>
@@ -701,7 +696,6 @@ function App() {
           </div>
           <div className="footer-section">
             <h4>Connect</h4>
-            {/* FIX 4: Replace # with actual URLs or use buttons */}
             <div className="social-links">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={20} /></a>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={20} /></a>
