@@ -4,10 +4,6 @@ import "./App.css";
 import { motion, useScroll } from "framer-motion";
 import {
   ArrowRight,
-  Award,
-  BookOpen,
-  Users,
-  Globe,
   MapPin,
   Calendar,
   Search,
@@ -18,172 +14,9 @@ import {
   Sun,
   Moon,
   Menu,
-  CreditCard,
-  Smartphone,
-  QrCode,
-  Building2,
   Mail,
   Phone,
-  User,
-  Lock,
-  Eye,
-  Heart,
-  Share2,
-  ThumbsUp,
-  Star,
-  Quote,
-  Camera,
-  Video,
-  FileText,
-  Download,
-  Bookmark,
-  Check,
-  AlertCircle,
-  Info,
-  HelpCircle,
-  Settings,
-  LogOut,
-  RefreshCw,
-  Plus,
-  Minus,
   Trash2,
-  Edit3,
-  Copy,
-  Save,
-  Folder,
-  File,
-  Image,
-  Music,
-  Archive,
-  Cloud,
-  Bell,
-  UserPlus,
-  UserCheck,
-  UserX,
-  LogIn,
-  ZoomIn,
-  ZoomOut,
-  Maximize,
-  Minimize,
-  Grid,
-  List,
-  Layout,
-  Columns,
-  Rows,
-  PanelLeft,
-  PanelRight,
-  PanelTop,
-  PanelBottom,
-  Sidebar,
-  Split,
-  Merge,
-  ChevronDown,
-  Clock,
-  TrendingUp,
-  BarChart3,
-  PieChart,
-  Activity,
-  Zap,
-  Sparkles,
-  Crown,
-  Shield,
-  Key,
-  Wallet,
-  Laptop,
-  Tablet,
-  Monitor,
-  Tv,
-  Radio,
-  Headphones,
-  Speaker,
-  Microphone,
-  Film,
-  Clapperboard,
-  Theatre,
-  Palette,
-  Paintbrush,
-  Pencil,
-  PenTool,
-  Type,
-  Bold,
-  Italic,
-  Underline,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
-  AlignJustify,
-  ListOrdered,
-  CheckSquare,
-  Square,
-  Circle,
-  Undo,
-  Redo,
-  FolderOpen,
-  FilePlus,
-  FileMinus,
-  FileText as FileTextIcon,
-  Images,
-  Video as VideoIcon,
-  Download as DownloadIcon,
-  Upload,
-  CloudRain,
-  CloudSnow,
-  Wind,
-  Thermometer,
-  Droplet,
-  Umbrella,
-  EyeOff,
-  BellOff,
-  UserMinus,
-  RotateCw,
-  RotateCcw,
-  Move,
-  Multiply,
-  Divide,
-  Equal,
-  Percent,
-  DollarSign,
-  Euro,
-  PoundSterling,
-  Yen,
-  Bitcoin,
-  Coins,
-  ShoppingBag,
-  ShoppingCart,
-  Gift,
-  Package,
-  Box,
-  Truck,
-  Ship,
-  Plane,
-  Train,
-  Bus,
-  Bike,
-  Car,
-  Footprints,
-  Navigation,
-  Compass,
-  Map,
-  Globe2,
-  Earth,
-  Satellite,
-  Database,
-  Server,
-  Cpu,
-  HardDrive,
-  Watch,
-  Mic,
-  AlertTriangle,
-  LifeBuoy,
-  MessageSquare,
-  Paperclip,
-  AtSign,
-  Hash,
-  Tag,
-  Link,
-  ExternalLink,
-  MoreHorizontal,
-  MoreVertical,
 } from "lucide-react";
 
 // Import social media icons from react-icons
@@ -198,8 +31,6 @@ function App() {
     { type: "bot", text: "Hello! I'm your AI assistant. How can I help you today?" }
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  const [showDonationModal, setShowDonationModal] = useState(false);
-  const [showVolunteerModal, setShowVolunteerModal] = useState(false);
   const [volunteerForm, setVolunteerForm] = useState({
     name: "",
     phone: "",
@@ -256,10 +87,8 @@ function App() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  // FIX 1: Remove unused scrollYProgress
-  // const { scrollYProgress } = useScroll(); // REMOVED - not being used
-  // Just use useScroll without destructuring if you need it later
-  useScroll(); // This is fine, but we're not using the return value
+  // useScroll is kept for potential future use
+  useScroll();
 
   const handleChatSubmit = (e) => {
     e.preventDefault();
@@ -298,7 +127,6 @@ function App() {
     const message = `Name: ${volunteerForm.name}%0APhone: ${volunteerForm.phone}%0AEmail: ${volunteerForm.email}%0AMessage: ${volunteerForm.message}`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
-    setShowVolunteerModal(false);
     setVolunteerForm({ name: "", phone: "", email: "", message: "" });
   };
 
@@ -424,7 +252,9 @@ function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="primary-btn"
-              onClick={() => setShowVolunteerModal(true)}
+              onClick={() => {
+                document.getElementById('volunteer')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Connect Now
               <ArrowRight size={18} />
