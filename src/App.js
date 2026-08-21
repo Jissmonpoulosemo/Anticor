@@ -49,13 +49,13 @@ function App() {
     },
     { 
       id: 2, 
-      url: "/image/1000820747.jpg", 
+      url: "/image/sunil.jpg", 
       title: "News 2", 
       category: "News" 
     },
     { 
       id: 3, 
-      url: "/image/1000820749.jpg", 
+      url: "/image/sunil2.jpg", 
       title: "News 4", 
       category: "News" 
     },
@@ -69,7 +69,7 @@ function App() {
   const [selectedGalleryImage, setSelectedGalleryImage] = useState(null);
   const [galleryFilter, setGalleryFilter] = useState("all");
 
-  // Main person images for carousel
+  // Main person images for carousel (portrait images)
   const heroImages = [
     "/image/1000820751.jpg",
     "/image/1000820751.jpg",
@@ -260,6 +260,7 @@ function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="secondary-btn"
+              onClick={() => window.open('https://youtube.com/@sunilkarappadam2452?si=sEai5jH871iwUm8s', '_blank')}
             >
               <Play size={18} />
               Watch Story
@@ -302,7 +303,7 @@ function App() {
           </div>
         </motion.div>
 
-        {/* Carousel */}
+        {/* Portrait Carousel */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -315,7 +316,11 @@ function App() {
                 key={index}
                 className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
               >
-                <img src={image} alt={`Slide ${index + 1}`} />
+                <img 
+                  src={image} 
+                  alt={`Portrait ${index + 1}`} 
+                  loading="lazy"
+                />
               </div>
             ))}
             <div className="carousel-dots">
@@ -324,6 +329,7 @@ function App() {
                   key={index}
                   className={`dot ${index === currentSlide ? 'active' : ''}`}
                   onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
@@ -448,6 +454,7 @@ function App() {
                     e.stopPropagation();
                     handleDeleteImage(image.id);
                   }}
+                  aria-label="Delete image"
                 >
                   <Trash2 size={16} />
                 </button>
@@ -609,10 +616,10 @@ function App() {
             </div>
           </div>
           <div className="social-links-large">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={30} /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={30} /></a>
+            <a href="https://www.instagram.com/bjp.karappadam?igsh=MXFuOTkxbTdna2Mzeg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={30} /></a>
+            <a href="https://www.facebook.com/share/1LgbjxjGgB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={30} /></a>
+            <a href="https://youtube.com/@sunilkarappadam2452?si=sEai5jH871iwUm8s" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><FaYoutube size={30} /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter size={30} /></a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><FaYoutube size={30} /></a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={30} /></a>
           </div>
         </div>
@@ -697,10 +704,10 @@ function App() {
           <div className="footer-section">
             <h4>Connect</h4>
             <div className="social-links">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={20} /></a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={20} /></a>
+              <a href="https://www.instagram.com/bjp.karappadam?igsh=MXFuOTkxbTdna2Mzeg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={20} /></a>
+              <a href="https://www.facebook.com/share/1LgbjxjGgB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF size={20} /></a>
+              <a href="https://youtube.com/@sunilkarappadam2452?si=sEai5jH871iwUm8s" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><FaYoutube size={20} /></a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter size={20} /></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Youtube"><FaYoutube size={20} /></a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={20} /></a>
             </div>
             <div className="newsletter">
