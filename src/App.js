@@ -72,7 +72,7 @@ function App() {
   // Main person images for carousel (portrait images)
   const heroImages = [
     "/image/1000820751.jpg",
-    "/image/suniil.jpg",
+    "/image/Sunil.jpg",
     "/image/sunil2.jpg",
   ];
 
