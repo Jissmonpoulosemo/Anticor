@@ -13,7 +13,6 @@ import {
   Menu,
   Mail,
   Phone,
-  Trash2,
 } from "lucide-react";
 
 // Import social media icons from react-icons
@@ -39,30 +38,26 @@ function App() {
   // Logo - Using your image 1000820745.jpg
   const logoUrl = "/image/1000820745.jpg";
 
-  // Gallery state with your images - renamed as News 1, News 2, etc.
-  const [galleryImages, setGalleryImages] = useState([
+  // Gallery state with your images - 4 NEWSPAPER CUTTINGS
+  const [galleryImages] = useState([
     { 
       id: 1, 
-      url: "/image/1000820748.jpg", 
-      title: "News 1", 
+      url: "/image/WhatsApp Image 2026-10-02 at 9.52.59 PM.jpeg", 
       category: "News" 
     },
     { 
       id: 2, 
-      url: "/image/sunil.jpg", 
-      title: "News 2", 
+      url: "/image/WhatsApp Image 2026-10-02 at 9.53.00 PM (1).jpeg", 
       category: "News" 
     },
     { 
       id: 3, 
-      url: "/image/sunil2.jpg", 
-      title: "News 4", 
+      url: "/image/WhatsApp Image 2026-10-02 at 9.53.01 PM (1).jpeg", 
       category: "News" 
     },
     { 
       id: 4, 
-      url: "/image/1000820746.jpg", 
-      title: "News 3", 
+      url: "/image/WhatsApp Image 2026-10-02 at 9.53.01 PM.jpeg", 
       category: "News" 
     },
   ]);
@@ -72,7 +67,7 @@ function App() {
   // Main person images for carousel (portrait images)
   const heroImages = [
     "/image/1000820751.jpg",
-    "/image/Sunil.jpg",
+    "/image/Sunil.JPG", 
     "/image/sunil2.jpg",
   ];
 
@@ -84,7 +79,6 @@ function App() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  // useScroll is kept for potential future use
   useScroll();
 
   const handleChatSubmit = (e) => {
@@ -106,21 +100,16 @@ function App() {
     setChatMessage("");
   };
 
-  // Gallery functions
-  const handleDeleteImage = (id) => {
-    setGalleryImages(galleryImages.filter(img => img.id !== id));
-  };
-
   const filteredGallery = galleryFilter === "all" 
     ? galleryImages 
     : galleryImages.filter(img => img.category === galleryFilter);
 
   const categories = [...new Set(galleryImages.map(img => img.category))];
 
-  // Volunteer form submission - WhatsApp
+  // Volunteer form submission - WhatsApp to 9446828106
   const handleVolunteerSubmit = (e) => {
     e.preventDefault();
-    const phoneNumber = "9633228352";
+    const phoneNumber = "9446828106";
     const message = `Name: ${volunteerForm.name}%0APhone: ${volunteerForm.phone}%0AEmail: ${volunteerForm.email}%0AMessage: ${volunteerForm.message}`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
@@ -269,33 +258,21 @@ function App() {
 
           <div className="hero-stats">
             <div className="stat-item">
-              <motion.h3
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
+              <motion.h3 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
                 20+
               </motion.h3>
               <p>Years Experience</p>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <motion.h3
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
+              <motion.h3 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
                 120
               </motion.h3>
               <p>Public Talks</p>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <motion.h3
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
+              <motion.h3 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
                 15
               </motion.h3>
               <p>Social Achievements</p>
@@ -316,11 +293,7 @@ function App() {
                 key={index}
                 className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
               >
-                <img 
-                  src={image} 
-                  alt={`Portrait ${index + 1}`} 
-                  loading="lazy"
-                />
+                <img src={image} alt={`Portrait ${index + 1}`} loading="lazy" />
               </div>
             ))}
             <div className="carousel-dots">
@@ -336,21 +309,24 @@ function App() {
           </div>
           <div className="image-overlay"></div>
           <motion.div
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
+            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
             className="pulse-ring"
           ></motion.div>
         </motion.div>
       </section>
 
-      {/* Vision Section - Cards only, no paragraph */}
+      {/* Video Section - Just Below Carousel */}
+      <section className="video-section">
+        <div className="video-container">
+          <video controls autoPlay muted loop playsInline className="top-video">
+            <source src="/image/WhatsApp Video 2026-10-02 at 9.52.57 PM.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      {/* Vision Section */}
       <section id="vision" className="vision-section">
         <h2 className="section-title">Our Vision</h2>
         <div className="vision-grid">
@@ -360,10 +336,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              whileHover={{ 
-                y: -10,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
-              }}
+              whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
               className="vision-card"
             >
               <div className="vision-icon">{card.icon}</div>
@@ -375,7 +348,7 @@ function App() {
         </div>
       </section>
 
-      {/* Achievements - Cards only, no paragraph */}
+      {/* Achievements */}
       <section id="achievements" className="achievements-section">
         <h2 className="section-title">Achievements</h2>
         <div className="achievements-grid">
@@ -409,11 +382,10 @@ function App() {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery Section - CLEAN UNIFORM GRID (No Delete Button) */}
       <section id="gallery" className="gallery-section">
         <h2 className="section-title">News Gallery</h2>
-        
-        {/* Gallery Filters - News only */}
+
         <div className="gallery-filters">
           <button 
             className={galleryFilter === "all" ? "active" : ""} 
@@ -432,55 +404,38 @@ function App() {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="gallery-grid">
+        {/* UNIFORM GRID - Every card same size, image fits inside */}
+        <div className="news-uniform-gallery">
           {filteredGallery.map((image, index) => (
             <motion.div
               key={image.id}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{ scale: 1.03 }}
-              className="gallery-item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.08 }}
+              className="news-uniform-card"
               onClick={() => setSelectedGalleryImage(image)}
             >
-              <img src={image.url} alt={image.title} loading="lazy" />
-              <div className="gallery-overlay">
-                <h4>{image.title}</h4>
-                <span className="gallery-category">{image.category}</span>
-                <button 
-                  className="delete-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDeleteImage(image.id);
-                  }}
-                  aria-label="Delete image"
-                >
-                  <Trash2 size={16} />
-                </button>
+              <div className="news-uniform-image-box">
+                <img src={image.url} alt="News" loading="lazy" />
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Lightbox Modal */}
+        {/* Lightbox */}
         {selectedGalleryImage && (
           <div className="lightbox" onClick={() => setSelectedGalleryImage(null)}>
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
               <button className="lightbox-close" onClick={() => setSelectedGalleryImage(null)}>
                 <X size={24} />
               </button>
-              <img src={selectedGalleryImage.url} alt={selectedGalleryImage.title} />
-              <div className="lightbox-info">
-                <h3>{selectedGalleryImage.title}</h3>
-                <span className="lightbox-category">{selectedGalleryImage.category}</span>
-              </div>
+              <img src={selectedGalleryImage.url} alt="News" />
             </div>
           </div>
         )}
       </section>
 
-      {/* Timeline Section */}
+      {/* Timeline */}
       <section className="timeline-section">
         <h2 className="section-title">Our Journey</h2>
         <div className="timeline">
@@ -505,7 +460,7 @@ function App() {
         </div>
       </section>
 
-      {/* Volunteer Portal - WhatsApp Integration */}
+      {/* Volunteer */}
       <section id="volunteer" className="volunteer-section">
         <h2 className="section-title">Volunteer Portal</h2>
         <div className="volunteer-container">
@@ -588,7 +543,7 @@ function App() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact */}
       <section id="contact" className="contact-section">
         <h2 className="section-title">Contact</h2>
         <div className="contact-container">
@@ -604,7 +559,7 @@ function App() {
               <Mail size={24} />
               <div>
                 <h4>Email</h4>
-                <p>anticorruptionpeople@gmail.com</p>
+                <p>anticorruptionpeoples@gmail.com</p>
               </div>
             </div>
             <div className="contact-item">
@@ -625,7 +580,24 @@ function App() {
         </div>
       </section>
 
-      {/* AI Chat Assistant */}
+      {/* Map */}
+      <section className="map-section">
+        <h2 className="section-title">Our Location</h2>
+        <div className="map-container">
+          <iframe
+            title="Nandhi Tours & Travels Location"
+            src="https://maps.google.com/maps?q=Nandhi%20Tours%20%26%20Travels,%20Chalakudy&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0, borderRadius: "20px" }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      {/* AI Chat */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -684,8 +656,15 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>Anti Corruption People</h3>
-            <p>Dedicated to public service, leadership, education and global dialogue.</p>
+            <h3>Sunil Karappadam</h3>
+            <p className="chairman-title">Chairman</p>
+            <p className="address-text">
+              Sunilkumar Tk<br />
+              Thekkoodan House<br />
+              Kuttichira po<br />
+              Chalakudy 680724
+            </p>
+            <p className="footer-email">anticorruptionpeoples@gmail.com</p>
           </div>
           <div className="footer-section">
             <h4>Quick Links</h4>
@@ -718,7 +697,7 @@ function App() {
         </div>
         <div className="footer-bottom">
           <p>&copy; 2026 Anti Corruption People. All rights reserved.</p>
-          <p>Helpline: 9633228352</p>
+          <p>Helpline: 9446828106</p>
         </div>
       </footer>
     </div>
